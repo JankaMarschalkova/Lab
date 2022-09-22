@@ -23,6 +23,7 @@ import random
 
 def play_again() -> bool:
     user_input = input("Do you want to play again? ==> ")
+    # if user inputs incorrect input, there is this information ouput and it will promt user again
     while user_input.lower() not in ['y', 'yes', 'n', 'no']:
         print("You must enter Y/YES/N/NO to continue. Please try again")
         user_input = input("Do you want to play again? ==> ")
@@ -31,6 +32,7 @@ def play_again() -> bool:
 
 def get_wager(bank: int) -> int:
     chips = int(input("How many chips you want to wager? ==> "))
+    # if user inputs incorrect input, there is this information ouput and it will promt user again
     while chips <= 0 or chips > bank:
         if chips <= 0:
             print("The wager amount must be greater than 0. Please enter again.")
@@ -41,6 +43,7 @@ def get_wager(bank: int) -> int:
 
 
 def get_slot_results() -> tuple:
+    # return 3 random integers
     return random.randint(1,10), random.randint(1,10), random.randint(1,10)
 
 
@@ -58,6 +61,7 @@ def get_matches(reela, reelb, reelc) -> int:
 
 def get_bank() -> int:
     chips = int(input("How many chips you want to start with? ==> "))
+    # if user inputs incorrect input, there is this information ouput and it will promt user again
     while chips < 0 or chips > 101:
         if chips < 0:
             print("Too low a value, you can only choose 1 - 100 chips")
@@ -90,6 +94,7 @@ if __name__ == "__main__":
 
             wager = get_wager(bank)
 
+            # controling if the currect wager is the maximum one
             if wager > most_chip:
                 most_chip = wager
             reel1, reel2, reel3 = get_slot_results()
