@@ -7,9 +7,9 @@
 ##
 ## PROBLEM : Describe the problem
 ##
-## ALGORITHM : 
+## ALGORITHM :
 ##      1. Write out the algorithm
-## 
+##
 ## ERROR HANDLING:
 ##      Any Special Error handling to be noted.  Wager not less than 0. etc
 ##
@@ -18,8 +18,6 @@
 ##
 ########################################################################
 
-
-# import statements
 
 def get_school(card):
     school = card[5]
@@ -58,12 +56,14 @@ def get_check_digit(card):
     return sum % 10
 
 
+# functions return index of first not character
 def get_index_of_not_character(str):
     for index in range(len(str)):
         if not str[index].isalpha():
             return index
 
 
+# functions return index of first not digit
 def get_index_of_not_digit(str):
     for index in range(len(str)):
         if not str[index].isdigit:
@@ -88,11 +88,22 @@ def verify_check_digit(card):
     else:
         return True, ""
 
+
 if __name__ == "__main__":
-    print(verify_check_digit("ABCDE12383"))
-    print(get_check_digit("ABCDE1234X"))
-    print(get_check_digit("ZZZZZ1259X"))
-    print(get_check_digit("VWXYZ3459X"))
-    # main program
-    print("Main Program")
+    title = "Linda Hall"
+    subtitle = "Library Card Check"
+    plain = ""
+    print(f"{title:^50}\n{subtitle:^50}\n{plain:=^50}\n")
+    card = input("Enter Library Card. Hit Enter to Exit ==> ")
+    while card != '':
+        validation, error = verify_check_digit(card)
+        if validation:
+            print("Library card is valid.")
+            print(f"The card belongs to a student in {get_school(card)}")
+            print(f"The card belongs to a {get_grade(card)}\n")
+            card = input("Enter Library Card. Hit Enter to Exit ==> ")
+        else:
+            print(f"Library card is invalid.\n{error}\n")
+            card = input("Enter Library Card. Hit Enter to Exit ==> ")
+
 
